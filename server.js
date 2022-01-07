@@ -14,3 +14,9 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.json());
+
+
+
+app.get('/', (req, res) => {
+    res.render('index.ejs')
+})
