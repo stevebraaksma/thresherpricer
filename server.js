@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 app.post('/parts', (req, res) => {
     // res.render('index.ejs')
     console.log('heyyyy');
-    console.log(req.body.tester)
+    console.log(req.body.partNum)
     res.redirect('/');
 
     // to do:
