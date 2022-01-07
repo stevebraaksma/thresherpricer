@@ -12,9 +12,13 @@
 
     
     <form action="/parts" method="POST">
-        <input type="text" name="partNum" placeholder="Part Number">
-        <input type="text" name="partQty" placeholder="Part Qty">
-        <input type="text" name="intPartNum" placeholder="Internal Part Number">
+        <input type="text" name="partNum[]" placeholder="Part Number">
+        <input type="text" name="partQty[]" placeholder="Part Qty">
+        <input type="text" name="intPartNum[]" placeholder="Internal Part Number">
+        <br><br>
+        <input type="text" name="partNum[]" placeholder="Part Number">
+        <input type="text" name="partQty[]" placeholder="Part Qty">
+        <input type="text" name="intPartNum[]" placeholder="Internal Part Number">
         <br><br>
         <input type="submit" value="Submit">
     </form>

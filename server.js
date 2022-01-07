@@ -24,8 +24,16 @@ app.get('/', (req, res) => {
 
 app.post('/parts', (req, res) => {
     // res.render('index.ejs')
+
     console.log('heyyyy');
-    console.log(req.body.partNum)
+    console.log(req.body.partNum[0])
+    console.log(req.body.partQty[0])
+    console.log(req.body.intPartNum[0])
+    console.log(req.body.partNum[1])
+    console.log(req.body.partQty[1])
+    console.log(req.body.intPartNum[1])
+    console.log(req.body)
+        
     res.redirect('/');
 
     // to do:
