@@ -33,21 +33,80 @@ app.post('/parts', (req, res) => {
     console.log(req.body.partQty[1])
     console.log(req.body.intPartNum[1])
     console.log(req.body)
-    axios({
-        method: 'post',
-        url: "https://api.mouser.com/api/v1/search/keyword?apiKey=53cd927d-3725-4cce-aaa8-50851d7c13f6",
-        data: {
-            SearchByKeywordRequest: {
-                        keyword: 'TLC6983RRFR'
-                }
-        }
-    })
-    .then( (response)=>{
-        console.log(response)
-    })
-    .catch((err) => {
-        console.log(err);
-    })
+
+
+    // put below in for loop
+
+
+    for (let i = 0; i < req.body.partNum.length; i++) {
+        console.log("bingo")
+        
+    
+
+
+
+        axios({
+            method: 'post',
+            url: "https://api.mouser.com/api/v1/search/keyword?apiKey=53cd927d-3725-4cce-aaa8-50851d7c13f6",
+            data: {
+                SearchByKeywordRequest: {
+                            keyword: req.body.partNum[i]
+                    }
+            }
+        })
+        .then( (response)=>{
+            let partQty = req.body.partQty[i];
+            let partPrice = '';
+
+            let priceBreakArrayLength = response.data.SearchResults.Parts[0].PriceBreaks.length;
+            Number(priceBreakArrayLength);
+            priceBreakArrayLength = priceBreakArrayLength -1;
+
+            let priceBreakArray = response.data.SearchResults.Parts[0].PriceBreaks
+            console.log(priceBreakArray);
+            
+            // ***** need to fix to add pricing for "less than" price break
+            if (partQty >= priceBreakArray[priceBreakArrayLength].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength].Price)
+            } else if 
+                (partQty >= priceBreakArray[priceBreakArrayLength-1].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength-1].Price)
+            } else if 
+                (partQty >= priceBreakArray[priceBreakArrayLength-2].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength-2].Price)
+            } else if 
+                (partQty >= priceBreakArray[priceBreakArrayLength-3].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength-3].Price)
+            } else if 
+                (partQty >= priceBreakArray[priceBreakArrayLength-4].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength-4].Price)
+            } else if 
+                (partQty >= priceBreakArray[priceBreakArrayLength-5].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength-5].Price)
+            } else if 
+                (partQty >= priceBreakArray[priceBreakArrayLength-6].Quantity) {
+                console.log(priceBreakArray[priceBreakArrayLength-6].Price)
+            }
+
+            console.log(partQty)
+            console.log(partPrice)
+
+            });
+        res.render('index.ejs', {
+            project: "bingo",
+        })
+
+
+
+
+        
+        .catch((err) => {
+            console.log(err);
+        })
+
+
+
+    };
 
 
 

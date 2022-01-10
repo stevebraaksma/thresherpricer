@@ -10,9 +10,21 @@
     
     <h1>ThresherPricer</h1>
 
+    <h4></h4>Instructions</h4>
+    <p>To price components available at Mouser Electonics (www.mouser.com)
+    enter the manufacturer part number and quantity.
+    (You may also optionally enter an internal part number for reference.)
+    <br><br>
+
+    <p>Sample part numbers for test purposes:</p>
+    <ul>
+        <li>TLC6983RRFR</li>
+        <li>TLC6983RRFR</li>
+        <li>TLC6983RRFR</li>
+      </ul>
+
     
     <form action="/parts" method="POST">
-        TLC6983RRFR   100   AGHEITHS <br>
         <input type="text" name="partNum[]" placeholder="Part Number">
         <input type="text" name="partQty[]" placeholder="Part Qty">
         <input type="text" name="intPartNum[]" placeholder="Internal Part Number">
@@ -23,6 +35,10 @@
         <br><br>
         <input type="submit" value="Submit">
     </form>
+
+    <p id="priced">
+        
+    </p>
 
 </body>
 </html>
