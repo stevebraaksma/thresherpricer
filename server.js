@@ -15,6 +15,11 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.json());
 
+const partNumArray = [];
+const partQtyArray = [];
+// const intPartNum = [];   come back to this one
+const partPriceArray = [];
+
 
 
 app.get('/', (req, res) => {
@@ -24,7 +29,7 @@ app.get('/', (req, res) => {
 
 app.get('/results', (req, res) => {
     res.render('results.ejs', {
-        results: 'hello world'
+        results: partQtyArray
     })
 })
 
@@ -41,9 +46,7 @@ app.post('/parts', (req, res) => {
     // console.log(req.body.intPartNum[1])
     // console.log(req.body)
 
-    const partQtyArray = [];
-    const partPriceArray = [];
-    const partNumArray = [];
+
     // let partPrice = [];
     // let partNumber = req.body.partNum[i]
 
@@ -157,7 +160,7 @@ app.post('/parts', (req, res) => {
 
 
         
-    res.redirect('/');
+    res.redirect('/results');
 
 
     // app.get('/', (req, res) => {
