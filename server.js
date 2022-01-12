@@ -22,6 +22,13 @@ app.get('/', (req, res) => {
 })
 
 
+app.get('/results', (req, res) => {
+    res.render('results.ejs', {
+        results: 'hello world'
+    })
+})
+
+
 app.post('/parts', (req, res) => {
     // res.render('index.ejs')
 
@@ -36,6 +43,7 @@ app.post('/parts', (req, res) => {
 
     const partQtyArray = [];
     const partPriceArray = [];
+    const partNumArray = [];
     // let partPrice = [];
     // let partNumber = req.body.partNum[i]
 
@@ -44,6 +52,8 @@ app.post('/parts', (req, res) => {
 
     for (let i = 0; i < req.body.partNum.length; i++) {
         console.log("bingo")
+
+        let currentPartNum = req.body.partNum[i]
         
 
         
@@ -58,7 +68,7 @@ app.post('/parts', (req, res) => {
             url: "https://api.mouser.com/api/v1/search/keyword?apiKey=53cd927d-3725-4cce-aaa8-50851d7c13f6",
             data: {
                 SearchByKeywordRequest: {
-                            keyword: req.body.partNum[i]
+                            keyword: currentPartNum
                     }
             }
         })
@@ -102,13 +112,21 @@ app.post('/parts', (req, res) => {
             console.log(partPrice);
             
 
+            partNumArray.push(currentPartNum);
+            console.log(partNumArray);
+
             partQtyArray.push(partQty);
             console.log(partQtyArray);
 
+            // intPartNumArray.push(***currentPartNum****);
+            // console.log(intPartNumArray);
+            // first pass to ejs, later come back and add this
 
 
             partPriceArray.push(partPrice);
             console.log(partPriceArray);
+
+            
 
 
 
