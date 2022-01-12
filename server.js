@@ -25,15 +25,19 @@ app.get('/', (req, res) => {
 app.post('/parts', (req, res) => {
     // res.render('index.ejs')
 
-    console.log('heyyyy');
-    console.log(req.body.partNum[0])
-    console.log(req.body.partQty[0])
-    console.log(req.body.intPartNum[0])
-    console.log(req.body.partNum[1])
-    console.log(req.body.partQty[1])
-    console.log(req.body.intPartNum[1])
-    console.log(req.body)
+    // console.log('heyyyy');
+    // console.log(req.body.partNum[0])
+    // console.log(req.body.partQty[0])
+    // console.log(req.body.intPartNum[0])
+    // console.log(req.body.partNum[1])
+    // console.log(req.body.partQty[1])
+    // console.log(req.body.intPartNum[1])
+    // console.log(req.body)
 
+    const partQtyArray = [];
+    const partPriceArray = [];
+    // let partPrice = [];
+    // let partNumber = req.body.partNum[i]
 
     // put below in for loop
 
@@ -41,8 +45,12 @@ app.post('/parts', (req, res) => {
     for (let i = 0; i < req.body.partNum.length; i++) {
         console.log("bingo")
         
-    
 
+        
+    
+// this for loop is causing an error warning in console.
+// It runs for all, even blank forms, and then below where it calculates
+// the line length, there is no line length at all since it is null.
 
 
         axios({
@@ -59,6 +67,8 @@ app.post('/parts', (req, res) => {
             let partPrice = '';
 
             let priceBreakArrayLength = response.data.SearchResults.Parts[0].PriceBreaks.length;
+
+
             Number(priceBreakArrayLength);
             priceBreakArrayLength = priceBreakArrayLength -1;
 
@@ -67,34 +77,47 @@ app.post('/parts', (req, res) => {
             
             // ***** need to fix to add pricing for "less than" price break
             if (partQty >= priceBreakArray[priceBreakArrayLength].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength].Price)
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-1].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength-1].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength-1].Price)
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-2].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength-2].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength-2].Price)
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-3].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength-3].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength-3].Price)
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-4].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength-4].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength-4].Price)
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-5].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength-5].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength-5].Price)
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-6].Quantity) {
-                console.log(priceBreakArray[priceBreakArrayLength-6].Price)
+                partPrice = (priceBreakArray[priceBreakArrayLength-6].Price)
             }
 
-            console.log(partQty)
-            console.log(partPrice)
+            console.log(partQty);
+            console.log(partPrice);
+            
 
-            });
-        res.render('index.ejs', {
-            project: "bingo",
-        })
+            partQtyArray.push(partQty);
+            console.log(partQtyArray);
+
+
+
+            partPriceArray.push(partPrice);
+            console.log(partPriceArray);
+
+
+
+
+
+            // console.log('cheetah');
+
+            })
+     
 
 
 
@@ -103,6 +126,8 @@ app.post('/parts', (req, res) => {
         .catch((err) => {
             console.log(err);
         })
+
+
 
 
 
@@ -115,6 +140,12 @@ app.post('/parts', (req, res) => {
 
         
     res.redirect('/');
+
+
+    // app.get('/', (req, res) => {
+    //     res.render('index.ejs')
+    // })
+
 
     // to do:
     // take the form data, push it to an array (maybe, an array of objects, each object having 3 fields)
