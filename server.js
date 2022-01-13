@@ -14,6 +14,7 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.json());
+app.use(express.static('public'));
 
 let partNumArray = [];
 let partQtyArray = [];
