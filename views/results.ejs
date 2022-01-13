@@ -10,17 +10,52 @@
     
     <h1>ThresherPricer</h1>
 
+    <% if (results.length <= 0)  { %>
+        <form action="/results" method="GET">
+            <input type="submit" value="View Results">
+        </form>
+        &nbsp &nbsp
+        <form action="/" method="GET">
+            <input type="submit" value="Back to Home">
+        </form>
+    <%  }  else{  %>
+
+    
+
+
+
     <h4></h4>
     
     <br><br>
 
     <p>Results: <%=results[0]%></p>
+    <%= results.length %>
 
     <ul>
         <li>test var</li>
         <li>test var</li>
         <li>test var</li>
       </ul>
+
+
+    <div>
+        <table>
+            <tr>
+              <th>Mfg p/n:</th>
+              <th>Qty:</th>
+              <th>Internal p/n:</th>
+            </tr>
+                
+                <% for (let i = 0; i < results.length; i++)  { %>
+                    <tr>
+                    <td><%= results[0] %></td>
+                    <td><%= results[0] %></td>
+                <%  }  %>
+            </tr>
+          </table>
+    </div>
+
+    <%  }  %>
 
 
 

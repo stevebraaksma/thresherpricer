@@ -15,10 +15,10 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.json());
 
-const partNumArray = [];
-const partQtyArray = [];
+let partNumArray = [];
+let partQtyArray = [];
 // const intPartNum = [];   come back to this one
-const partPriceArray = [];
+let partPriceArray = [];
 
 
 
@@ -31,10 +31,15 @@ app.get('/results', (req, res) => {
     res.render('results.ejs', {
         results: partQtyArray
     })
+    partQtyArray = [];
 })
 
 
+
+
 app.post('/parts', (req, res) => {
+
+
     // res.render('index.ejs')
 
     // console.log('heyyyy');
@@ -46,11 +51,6 @@ app.post('/parts', (req, res) => {
     // console.log(req.body.intPartNum[1])
     // console.log(req.body)
 
-
-    // let partPrice = [];
-    // let partNumber = req.body.partNum[i]
-
-    // put below in for loop
 
 
     for (let i = 0; i < req.body.partNum.length; i++) {
@@ -129,47 +129,12 @@ app.post('/parts', (req, res) => {
             partPriceArray.push(partPrice);
             console.log(partPriceArray);
 
-            
-
-
-
-
-
-            // console.log('cheetah');
-
             })
-     
-
-
-
-
-        
         .catch((err) => {
             console.log(err);
         })
-
-
-
-
-
     };
-
-
-
-
-
-
-        
+    
     res.redirect('/results');
-
-
-    // app.get('/', (req, res) => {
-    //     res.render('index.ejs')
-    // })
-
-
-    // to do:
-    // take the form data, push it to an array (maybe, an array of objects, each object having 3 fields)
-    // then, will pass this data to the mouser function, which will for each loop through, sending a pricing req for each
 
 });
