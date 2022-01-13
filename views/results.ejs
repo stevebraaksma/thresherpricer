@@ -10,7 +10,7 @@
     
     <h1>ThresherPricer</h1>
 
-    <% if (results.length <= 0)  { %>
+    <% if (partQty.length <= 0)  { %>
         <form action="/results" method="GET">
             <input type="submit" value="View Results">
         </form>
@@ -28,8 +28,7 @@
     
     <br><br>
 
-    <p>Results: <%=results[0]%></p>
-    <%= results.length %>
+
 
     <ul>
         <li>test var</li>
@@ -46,13 +45,15 @@
               <th>Internal p/n:</th>
             </tr>
                 
-                <% for (let i = 0; i < results.length; i++)  { %>
-                    <tr>
-                    <td><%= results[0] %></td>
-                    <td><%= results[0] %></td>
-                <%  }  %>
-            </tr>
-          </table>
+            <% for (let i = 0; i < partQty.length; i++)  { %>
+                <tr>
+                    <td><%= partNum[i] %></td>
+                    <td><%= partQty[i] %></td>
+                    <td><%= intPartNum[i] %></td>
+                </tr>
+            <%  }  %>
+            
+        </table>
     </div>
 
     <%  }  %>

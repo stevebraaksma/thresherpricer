@@ -17,7 +17,7 @@ app.use(express.json());
 
 let partNumArray = [];
 let partQtyArray = [];
-// const intPartNum = [];   come back to this one
+let intPartNumArray = [];
 let partPriceArray = [];
 
 
@@ -41,9 +41,13 @@ app.get('/', (req, res) => {
 
 app.get('/results', (req, res) => {
     res.render('results.ejs', {
-        results: partQtyArray
+        partNum: partNumArray,
+        partQty: partQtyArray,
+        intPartNum: intPartNumArray,
     })
+    partNumArray = [];
     partQtyArray = [];
+    intPartNumArray = [];
 })
 
 
@@ -89,6 +93,7 @@ app.post('/parts', (req, res) => {
         })
         .then( (response)=>{
             let partQty = req.body.partQty[i];
+            let intPartNum = req.body.intPartNum[i];
             let partPrice = '';
 
             let priceBreakArrayLength = response.data.SearchResults.Parts[0].PriceBreaks.length;
@@ -132,6 +137,10 @@ app.post('/parts', (req, res) => {
 
             partQtyArray.push(partQty);
             console.log(partQtyArray);
+
+
+            intPartNumArray.push(intPartNum);
+            console.log(intPartNumArray);
 
             // intPartNumArray.push(***currentPartNum****);
             // console.log(intPartNumArray);
