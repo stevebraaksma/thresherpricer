@@ -22,6 +22,18 @@ let partPriceArray = [];
 
 
 
+
+
+// to do
+// adjust values being displayed
+// 
+
+
+
+
+
+
+
 app.get('/', (req, res) => {
     res.render('index.ejs')
 })
