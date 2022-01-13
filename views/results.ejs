@@ -43,6 +43,7 @@
               <th>Mfg p/n:</th>
               <th>Qty:</th>
               <th>Internal p/n:</th>
+              <th>Price</th>
             </tr>
                 
             <% for (let i = 0; i < partQty.length; i++)  { %>
@@ -50,6 +51,7 @@
                     <td><%= partNum[i] %></td>
                     <td><%= partQty[i] %></td>
                     <td><%= intPartNum[i] %></td>
+                    <td><%= partPrice[i] %></td>
                 </tr>
             <%  }  %>
             

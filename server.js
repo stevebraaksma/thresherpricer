@@ -44,10 +44,12 @@ app.get('/results', (req, res) => {
         partNum: partNumArray,
         partQty: partQtyArray,
         intPartNum: intPartNumArray,
+        partPrice: partPriceArray,
     })
     partNumArray = [];
     partQtyArray = [];
     intPartNumArray = [];
+    partPriceArray = [];
 })
 
 
@@ -98,7 +100,6 @@ app.post('/parts', (req, res) => {
 
             let priceBreakArrayLength = response.data.SearchResults.Parts[0].PriceBreaks.length;
 
-
             Number(priceBreakArrayLength);
             priceBreakArrayLength = priceBreakArrayLength -1;
 
@@ -131,21 +132,14 @@ app.post('/parts', (req, res) => {
             console.log(partQty);
             console.log(partPrice);
             
-
             partNumArray.push(currentPartNum);
             console.log(partNumArray);
 
             partQtyArray.push(partQty);
             console.log(partQtyArray);
 
-
             intPartNumArray.push(intPartNum);
             console.log(intPartNumArray);
-
-            // intPartNumArray.push(***currentPartNum****);
-            // console.log(intPartNumArray);
-            // first pass to ejs, later come back and add this
-
 
             partPriceArray.push(partPrice);
             console.log(partPriceArray);
