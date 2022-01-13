@@ -100,6 +100,8 @@ app.post('/parts', (req, res) => {
             } else if 
                 (partQty >= priceBreakArray[priceBreakArrayLength-6].Quantity) {
                 partPrice = (priceBreakArray[priceBreakArrayLength-6].Price)
+            } else {
+                partPrice = (priceBreakArray[0].Price)
             }
 
             console.log(partQty);
