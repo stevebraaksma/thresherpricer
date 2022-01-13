@@ -1,3 +1,17 @@
 body {
-    background-color: rgb(99, 219, 219);
+    background-color: rgb(139, 219, 219);
 }
+
+
+
+
+a, a:link a:visited {
+    color: green;
+    text-decoration: none;
+    color: darkblue;
+  }
+
+  a:hover {
+    color: rgb(50, 50, 161);
+    text-decoration: underline;
+  }
