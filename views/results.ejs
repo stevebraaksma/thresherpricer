@@ -16,7 +16,7 @@
 
     <% if (partQty.length <= 0)  { %>
         <form action="/results" method="GET">
-            <input type="submit" value="View Results">
+            <input class="button button-primary" type="submit" value="View Results">
         </form>
         &nbsp &nbsp
         <form action="/" method="GET">
@@ -31,15 +31,6 @@
     <h4></h4>
     
     <br><br>
-
-
-
-    <ul>
-        <li>test var</li>
-        <li>test var</li>
-        <li>test var</li>
-      </ul>
-
 
     <div>
         <table>
@@ -61,6 +52,10 @@
             
         </table>
     </div>
+
+    <form action="/" method="GET">
+        <input type="submit" value="Back to Home">
+    </form>
 
     <%  }  %>
 
