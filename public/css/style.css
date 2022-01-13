@@ -1,5 +1,6 @@
 body {
     background-color: rgb(139, 219, 219);
+    padding: 30px;
 }
 
 
@@ -15,3 +16,7 @@ a, a:link a:visited {
     color: rgb(50, 50, 161);
     text-decoration: underline;
   }
+
+img {
+    width: 200px;
+}
