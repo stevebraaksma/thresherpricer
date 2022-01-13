@@ -24,15 +24,6 @@ let partPriceArray = [];
 
 
 
-// to do
-// adjust values being displayed
-// 
-
-
-
-
-
-
 
 app.get('/', (req, res) => {
     res.render('index.ejs')
@@ -58,17 +49,6 @@ app.get('/results', (req, res) => {
 app.post('/parts', (req, res) => {
 
 
-    // res.render('index.ejs')
-
-    // console.log('heyyyy');
-    // console.log(req.body.partNum[0])
-    // console.log(req.body.partQty[0])
-    // console.log(req.body.intPartNum[0])
-    // console.log(req.body.partNum[1])
-    // console.log(req.body.partQty[1])
-    // console.log(req.body.intPartNum[1])
-    // console.log(req.body)
-
 
 
     for (let i = 0; i < req.body.partNum.length; i++) {
@@ -76,13 +56,6 @@ app.post('/parts', (req, res) => {
 
         let currentPartNum = req.body.partNum[i]
         
-
-        
-    
-// this for loop is causing an error warning in console.
-// It runs for all, even blank forms, and then below where it calculates
-// the line length, there is no line length at all since it is null.
-
 
         axios({
             method: 'post',
